@@ -20,10 +20,6 @@ for(let x =0; x < playListWidth.length; x++){
 }
 let transitionWidth = 0;
 next.addEventListener('click', () =>{
-    //for test
-    console.log("next");
-    console.log("transitionWidth"+":"+transitionWidth);
-    console.log("allWidth"+":"+allWidth);
     if( transitionWidth +(4*150) > allWidth){
         return;
     }
@@ -32,10 +28,6 @@ next.addEventListener('click', () =>{
 },false);
 
 prev.addEventListener('click', () =>{
-    //for test
-    console.log("prev");
-    console.log("transitionWidth"+":"+transitionWidth);
-    console.log("allWidth"+":"+allWidth);
     if( transitionWidth ==0){
         return;
     }
@@ -112,14 +104,9 @@ for(let x=0; x < musicItems.length; x++){
         playbtn.click();
         playingAudio.loop = true;
         playbtn.style.backgroundImage = musicItems[x].style.backgroundImage;
-        changeBackground(musicItems[x].style.backgroundImage);
     });
 }
 
-// change background image 
-function changeBackground(image){
-    document.querySelector('.container').style.backgroundImage = `${image}`;
-}
 
 
 // playing animation
