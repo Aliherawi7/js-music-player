@@ -1,0 +1,424 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="bootstrap-icons.css">
+    <style>
+        @font-face{
+            font-family: 'skyfont';
+            src: url('fonts/Skyfont.otf');
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            font-family: 'skyfont';
+        }
+        
+        .container{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            color: rgb(163, 31, 31);
+            background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: background-image 0.1s ease-in-out;
+
+            
+        }
+        .container .title{
+            font-size: xx-large;
+        }
+        .music-player-container{
+            position: fixed;
+            top: 10%;
+            width: 80%;
+            height: 70%;
+            background-color: #ffffff26;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px 2px #6e6a6c7e;
+            display: grid;
+            grid-template-columns: 10% 90%;
+            overflow: hidden;
+        }
+        .navbar-menu{
+            display: grid;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-menu  button{
+            border: none;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: #ffffff2a;
+            cursor: pointer; 
+        }
+        .navbar-menu  button i{
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .navbar-menu button:hover{
+            background-color: #0396ff;
+            transition: all 0.2s linear;
+        }
+         /* setting */
+        .setting{
+            padding: 20px 4px;
+            position: absolute;
+            height: 100%;
+            width: 90%;
+            transform: scaleX(0);
+            background-color: #0f0909b0;
+            transform-origin: left;
+            transition: transform 0.2s ease-in-out;
+        }
+        .setting h4{
+            font-family: 'skyfont';
+            font-size: 15px;
+            color: #fff;
+        }
+        .setting .highlight-color{
+            margin-top: 30px;
+            font-size: 8px;
+            color: #fff;
+            font-family: 'skyfont';
+            text-align: left;
+        }
+        .setting i{
+            position: absolute;
+            cursor: pointer;
+            font-size: 30px;
+            right: 20px;
+            bottom: 20px;
+        }
+        .setting i:hover{
+            color:#0d0dd1 ;
+        }
+
+        select{
+            width: 100%;
+            margin: 10px 0;
+            color:#000066 ;
+            border-radius: 5px;
+        }
+        select option{
+            color: var(--c);
+        }
+        
+
+        /* music-player-body */
+        .music-player-body{
+            display: grid;
+            grid-template-rows: 65% 35%;
+        }
+        .playing-view{
+            position: relative;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 40% 60%;
+        }
+        .music-logo{
+            overflow: hidden;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: auto;
+            cursor: pointer;
+            background-image: url('image/1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: background-image 0.1s linear;
+        }
+        /* .animate{
+            position: absolute;
+            left: 3%;
+            top: 12%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: auto;
+            background-color: #ff0080;
+            transform: scale(1);
+            background-color: rgba(245, 245, 245, 0.445);
+            animation-name: animate1;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        } */
+        .music-logo i{
+            font-size: 150px;
+            font-weight: 900;
+            transition: all 0.4s linear;
+        }
+        .volume{
+            position: fixed;
+            padding-left: 10px;
+        }
+        
+        .sounds{
+            padding-top: 10px;
+            display: grid;
+            grid-template-columns: 20% 70%;
+            justify-content: center;
+            position: absolute;
+        }
+        .sounds input{
+            opacity: 0;
+            transition:all 0.1s linear;
+        }
+        .sounds i:hover + input,
+        .sounds i:focus + input,
+        .sounds i:active + input{
+            opacity: 1;
+        }
+        .sounds:hover input{
+            opacity: 1;
+        }
+        /* playing-detailes */
+        .playing-detailes{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+        .playing-detailes .mini-navbar{
+            position: absolute;
+            width: 100%;
+            top: 5%;
+            right: 5%;
+            display: flex;
+            justify-content: right;
+        }
+        .playing-detailes .mini-navbar *{
+            padding: 0 10px;
+        }
+        .playing-detailes .mini-navbar .hour .clock-info{
+            display: inline;
+        }
+        .playing-detailes .lines{
+            justify-self: self-end;
+        }
+        .playing-detailes .lines li{
+            transform-origin: bottom;
+            display: inline-block;
+            margin: 0 10px;
+            height: 50%;
+            width: 5px;
+            transform: scaleY(0.1);
+            background-color: #fad6a6;
+            animation-name: animat e2;
+            animation-duration: var(--j);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+
+        }
+
+
+
+        /* play list */
+        .play-list{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            height: 40%;
+            position: absolute;
+            bottom: 0px;
+        }
+        .play-list button{
+            margin: 0 4px;
+            border: none;
+            font-size: 40px;
+            font-weight: 900;
+            background-color: rgba(250, 250, 250, 0.212);
+            cursor: pointer;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            flex-shrink: 0;
+        }
+        .play-list button:hover{
+            background-color: #0396ff;
+        }
+        .play-list .inner-list{
+            overflow: hidden;
+        }
+        .play-list .inner-list .music-list{
+            display: flex; 
+            transition: transform 0.3s linear; 
+        }
+
+        .music-list .music{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: rgba(14, 12, 12, 0.13);
+            height: 100px;
+            width: 100px;
+            margin: 0 25px;
+            box-sizing: border-box;
+            padding: 5px;
+            background-image: url();
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+       
+
+
+
+
+
+
+        /* animation */
+        @keyframes animate1 {
+           from{
+                transform: scale(1);
+                transition: all 0.5s linear;
+            }
+            to{
+                transform: scale(1.2);
+                transition: all 1s linear;
+            }
+        }
+        @keyframes animate2 {
+           0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+                transform: scaleY(var(--i));
+                transition: all var(--j) linear;
+            }
+            5%, 15%, 25%, 35%, 45%,55%,65%,75%,85%, 95%{
+                transform: scaleY(1.2);
+                transition: all var(--j) linear;
+            }
+        }
+
+        /* media query */
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h4 class="title">Cool Music Player</h4>
+        <div class="music-player-container">
+            <div class="navbar-menu">
+                <button><i class="bi bi-music-note"></i></button>
+                <button><i class="bi bi-heart"></i></button>
+                <button><i class="bi bi-search"></i></button>
+                <button><i class="bi bi-music-note-list"></i></button>
+                <button class="btnsetting"><i class="bi bi-gear"></i></button>
+                <div class="setting">
+                    <h4>Setting</h4>
+                    <div class="highlight-color">
+                        <span>Color</span>
+                        <select name="color" id="color">
+                            <option value="" style="--c: #ff0076;">#ff0076</option>
+                            <option value="" style="--c: #48e1ec;">#48e1ec</option>
+                            <option value="" style="--c: #9055ff;">#9055ff</option>
+                            <option value="" style="--c: #dc2537;">#dc2537</option>
+                            <option value="" style="--c: #000066;">#000066</option>
+                            <option value="" style="--c: #fad6a6;">#fad6a6</option>
+                            <option value="" style="--c: #ff6800;">#ff6800</option>
+                        </select>
+                    </div>
+                    <i class="bi bi-arrow-left-circle" id="back-setting"></i>
+                </div>
+            </div>
+            <div class="music-player-body">
+                <div class="playing-view">
+                    <div class="playing-side">
+                        <!-- <div class="animate"></div> -->
+                        <div class="music-logo" id="playbtn">
+                            <i class="bi bi-play-fill"></i>
+                        </div>
+                        <div class="sounds">
+                            <i class="bi bi-volume-up-fill volume-icon"></i>
+                            <input type="range">
+                        </div>
+                    </div>
+                    <div class="playing-detailes">
+                        <div class="mini-navbar">
+                            <div class="hour">
+                                <i class="bi bi-clock-fill"></i><h4 class="clock-info"></h4>
+                            </div>
+                            <i class="bi bi-cloud"></i>
+                        </div>
+                        <div class="animation">
+                            <ul class="lines">
+                                <li style="--i: 0; --j: 15s;"></li>
+                                <li style="--i: 0.3; --j: 9s;"></li>
+                                <li style="--i: 0.6; --j: 8s;"></li>
+                                <li style="--i: 0.1; --j: 13s;"></li>
+                                <li style="--i: 0.3; --j: 4s;"></li>
+                                <li style="--i: 0.8; --j: 3s;"></li>
+                                <li style="--i: 0.2; --j: 9s;"></li>
+                                <li style="--i: 0.1; --j: 10s;"></li>
+                                <li style="--i: 0.5; --j: 12s;"></li>
+                                <li style="--i: 0; --j: 8s;"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="play-list">
+                    <button id="prev"><i class="bi bi-caret-left-fill"></i></button>
+                    <div class="inner-list">
+                        <div class="music-list">
+                            <div class="music" id="music1">
+                                <h4>Sami Yusuf</h4>
+                            </div>
+                            <div class="music" id="music2">
+                                <h4>Music 2</h4>
+                            </div>
+                            <div class="music" id="music3">
+                                <h4>Music 3</h4>
+                            </div>
+                            <div class="music" id="music4">
+                                <h4>Music 4</h4>
+                            </div>
+                            <div class="music" id="music5">
+                                <h4>Music 5</h4>
+                            </div>
+                            <div class="music" id="music6">
+                                <h4>Music 6</h4>
+                            </div>
+                            <div class="music" id="music7">
+                                <h4>Music 7</h4>
+                            </div>
+                            <div class="music" id="music8">
+                                <h4>Music 8</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="next"><i class="bi bi-caret-right-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js.js"></script>
+</body>
+</html>
