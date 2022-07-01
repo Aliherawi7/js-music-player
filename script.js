@@ -128,9 +128,9 @@ function stopAnimation(){
 let volumeSize = document.querySelector('.sounds input');
 volumeSize.addEventListener('change', volumeChange, false);
 
-
+console.dir(document.querySelector('.sounds input'))
 function volumeChange(){
-    document.querySelector('.sounds input').addEventListener('change',function(){
+    document.querySelector('.sounds input').addEventListener('pointermove',function(){
         playingAudio.volume = volumeSize.value/100;
     });
 
