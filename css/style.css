@@ -225,6 +225,7 @@ select option{
     height: 35%;
     position: absolute;
     bottom: 0px;
+    transition: bottom .2s ease-in;
 }
 .play-list button{
     margin: 0 4px;
@@ -238,11 +239,18 @@ select option{
     width: 50px;
     flex-shrink: 0;
 }
-.play-list button:hover{
+.play-list button:hover {
     background-color: #0396ff;
 }
+.btn-active{
+    background-color: #0396ff !important;
+}
+
 .play-list .inner-list{
     overflow: hidden;
+}
+.bottom-130{
+    bottom: -130px !important;
 }
 .play-list .inner-list .music-list{
     display: flex; 

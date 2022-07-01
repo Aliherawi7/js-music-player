@@ -166,3 +166,11 @@ selectOp.addEventListener('change', () => {
 
     
 });
+
+// playelist
+let playListBtn = document.getElementById("play-list");
+playListBtn.addEventListener('click',() =>{
+    document.querySelector(".play-list").classList.toggle("bottom-130");
+    playListBtn.classList.toggle("btn-active")
+    
+})
