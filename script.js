@@ -112,15 +112,15 @@ for(let x=0; x < musicItems.length; x++){
 // playing animation
 let animate = document.querySelectorAll('.lines li');
 function playanimation(){
-    for(var x =0; x < animate.length; x++){
-        animate[x].style.animationName = `animate2`;
-    }
+    animate.forEach((value)=>{
+        value.style.animationName = `animate2`;
+    })
     
 }
 function stopAnimation(){
-    for(var x =0; x < animate.length; x++){
-        animate[x].style.animationName = `animateuyt2`;
-    }
+    animate.forEach((value)=>{
+        value.style.animationName = `animateuyt2`;
+    })
 }
 
 
@@ -152,26 +152,38 @@ document.querySelector('#back-setting').addEventListener('click',() => {
 let selectOp = document.querySelector('select');
 selectOp.addEventListener('change', () => {
     let color = (selectOp[selectOp.selectedIndex].innerHTML);
-    console.log(selectOp[selectOp.selectedIndex].innerHTML);
-    var el = document.querySelectorAll('i');
-    for(var x = 0; x < el.length; x++){
-        el[x].style.color = `${color}`;
+    let allIcons = document.querySelectorAll('i');
+    el.forEach((value)=>{
+        value.style.color = `${color}`;
+    }) 
 
-    }
-    var el = document.querySelectorAll('h4');
-    for(var x = 0; x < el.length; x++){
-        el[x].style.color = `${color}`;
-    }
+    let allH4 = document.querySelectorAll('h4');
+    allH4.forEach((element)=>{
+        element.style.color = `${color}`;
+    })
+
     document.querySelector('input').background =  `${color}`;
 
     
 });
 
-// playelist
+// playelist button
 let playListBtn = document.getElementById("play-list");
 playListBtn.addEventListener('click',() =>{
     document.querySelector(".play-list").classList.toggle("bottom-130");
     document.querySelector(".music-player-body").classList.toggle("translateY-70");
     playListBtn.classList.toggle("btn-active")
     
+})
+
+// add to favorite list
+let favIcons = document.querySelectorAll(".add-to-fav i");
+favIcons.forEach((icon)=>{
+    icon.addEventListener("click", ()=>{
+        icon.classList.toggle("bi-heart");
+        icon.classList.toggle("bi-heart-fill");
+        
+        // adding music to favorite list
+        
+    })
 })
