@@ -171,6 +171,7 @@ selectOp.addEventListener('change', () => {
 let playListBtn = document.getElementById("play-list");
 playListBtn.addEventListener('click',() =>{
     document.querySelector(".play-list").classList.toggle("bottom-130");
+    document.querySelector(".music-player-body").classList.toggle("translateY-70");
     playListBtn.classList.toggle("btn-active")
     
 })

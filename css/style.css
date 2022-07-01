@@ -115,6 +115,7 @@ select option{
 .music-player-body{
     display: grid;
     grid-template-rows: 65% 35%;
+    transition: transform .2s ease-in;
 }
 .playing-view{
     position: relative;
@@ -252,6 +253,10 @@ select option{
 .bottom-130{
     bottom: -130px !important;
 }
+.translateY-70{
+    transform: translateY(70px);
+}
+
 .play-list .inner-list .music-list{
     display: flex; 
     transition: transform 0.3s linear; 
