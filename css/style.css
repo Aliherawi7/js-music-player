@@ -1,0 +1,293 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: rgb(163, 31, 31);
+    background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 0.1s ease-in-out;
+
+    
+}
+.container .title{
+    font-size: xx-large;
+    margin-top: 30px;;
+}
+.music-player-container{
+    position: fixed;
+    top: 15%;
+    width: 80%;
+    height: 70%;
+    background-color: #ffffff26;
+    border-radius: 5px;
+    box-shadow: 1px 1px 32px 10px #6e6a6c7e;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    overflow: hidden;
+}
+.navbar-menu{
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.navbar-menu  button{
+    border: none;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #ffffff2a;
+    cursor: pointer; 
+}
+.navbar-menu  button i{
+    font-size: 20px;
+    font-weight: 900;
+}
+.navbar-menu button:hover{
+    background-color: #0396ff;
+    transition: all 0.2s linear;
+}
+ /* setting */
+.setting{
+    padding: 20px 4px;
+    position: absolute;
+    height: 100%;
+    width: 90%;
+    transform: scaleX(0);
+    background-color: #0f0909b0;
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+}
+.setting h4{
+    font-family: 'skyfont';
+    font-size: 15px;
+    color: #fff;
+}
+.setting .highlight-color{
+    margin-top: 30px;
+    font-size: 8px;
+    color: #fff;
+    font-family: 'skyfont';
+    text-align: left;
+}
+.setting i{
+    position: absolute;
+    cursor: pointer;
+    font-size: 30px;
+    right: 20px;
+    bottom: 20px;
+}
+.setting i:hover{
+    color:#0d0dd1 ;
+}
+
+select{
+    width: 100%;
+    margin: 10px 0;
+    color:#000066 ;
+    border-radius: 5px;
+}
+select option{
+    color: var(--c);
+}
+
+
+/* music-player-body */
+.music-player-body{
+    display: grid;
+    grid-template-rows: 65% 35%;
+}
+.playing-view{
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 40% 60%;
+}
+.music-logo{
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    cursor: pointer;
+    background-image: url('image/1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 0.1s linear;
+}
+.music-logo i{
+    font-size: 150px;
+    font-weight: 900;
+    transition: all 0.4s linear;
+}
+.volume{
+    position: fixed;
+    padding-left: 10px;
+}
+
+.sounds{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 5px;
+    display: grid;
+    grid-template-columns: 20% 70%;
+    justify-content: center;
+    position: absolute;
+}
+.sounds input{
+    opacity: 0;
+    transition:all 0.1s linear;
+    cursor: pointer;
+}
+.sounds i:hover + input,
+.sounds i:focus + input,
+.sounds i:active + input{
+    opacity: 1;
+}
+.sounds:hover input{
+    opacity: 1;
+}
+/* playing-detailes */
+.playing-detailes{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.playing-detailes .mini-navbar{
+    position: absolute;
+    width: 100%;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: right;
+}
+.playing-detailes .mini-navbar *{
+    padding: 0 10px;
+}
+.playing-detailes .mini-navbar .hour .clock-info{
+    display: inline;
+}
+.playing-detailes .lines{
+    justify-self: self-end;
+}
+.playing-detailes .lines li{
+    transform-origin: bottom;
+    display: inline-block;
+    margin: 0 10px;
+    height: 50%;
+    width: 5px;
+    transform: scaleY(0.1);
+    background-color: #fad6a6;
+    animation-name: animat e2;
+    animation-duration: var(--j);
+    animation-timing-function: cubic-bezier(0.46, 0.87, 0.6, 0.01);
+    animation-iteration-count: infinite;
+
+}
+
+
+
+/* play list */
+.play-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 35%;
+    position: absolute;
+    bottom: 0px;
+}
+.play-list button{
+    margin: 0 4px;
+    border: none;
+    font-size: 40px;
+    font-weight: 900;
+    background-color: rgba(250, 250, 250, 0.212);
+    cursor: pointer;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    flex-shrink: 0;
+}
+.play-list button:hover{
+    background-color: #0396ff;
+}
+.play-list .inner-list{
+    overflow: hidden;
+}
+.play-list .inner-list .music-list{
+    display: flex; 
+    transition: transform 0.3s linear; 
+}
+
+.music-list .music{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(14, 12, 12, 0.13);
+    height: 100px;
+    width: 100px;
+    margin: 0 25px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* animation */
+@keyframes animate1 {
+   from{
+        transform: scale(1);
+        transition: all 0.5s linear;
+    }
+    to{
+        transform: scale(1.2);
+        transition: all 1s linear;
+    }
+}
+@keyframes animate2 {
+   0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+        transform: scaleY(var(--i));
+        transition: all var(--j) linear;
+    }
+    5%, 15%, 25%, 35%, 45%,55%,65%,75%,85%, 95%{
+        transform: scaleY(1.2);
+        transition: all var(--j) linear;
+    }
+}
+
+/* media query */
