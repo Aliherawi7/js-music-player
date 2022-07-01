@@ -179,7 +179,8 @@ playListBtn.addEventListener('click',() =>{
 // add to favorite list
 let favIcons = document.querySelectorAll(".add-to-fav i");
 favIcons.forEach((icon)=>{
-    icon.addEventListener("click", ()=>{
+    icon.addEventListener("click", (e)=>{
+        e.stopPropagation()
         icon.classList.toggle("bi-heart");
         icon.classList.toggle("bi-heart-fill");
         
