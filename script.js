@@ -1,10 +1,14 @@
 // general button
 const playbtn = document.getElementById('playbtn');
+const currentTimeSlider = document.getElementById('current_time_slider');
 const next = document.getElementById('next');
 const prev = document.getElementById('prev');
 const musicList = document.querySelector('.music-list');
+const innerMusicList = document.querySelector('.inner-list');
 const playListWidth = document.getElementsByClassName('music');
 let musicItems = document.getElementsByClassName('music');
+const totalTime = document.getElementById('total_time');
+const currentTime = document.getElementById('current_time');
 
 
 
@@ -87,42 +91,70 @@ initializeMusicList(musicfiles.length);
 
 // music list slider 
 
-let allWidth = 0;
-for (let x = 0; x < playListWidth.length; x++) {
-    allWidth += 150;
-}
 let transitionWidth = 0;
 next.addEventListener('click', () => {
-    if (transitionWidth + (4 * 150) > allWidth) {
-        return;
-    }
-    transitionWidth += 150;
-    musicList.style.transform = `translateX(-${transitionWidth}px)`;
+    innerMusicList.scrollLeft += 160
+    console.log(innerMusicList.scrollLeft)
 }, false);
 
 prev.addEventListener('click', () => {
-    if (transitionWidth == 0) {
-        return;
-    }
-    transitionWidth -= 150;
-    musicList.style.transform = `translateX(-${transitionWidth}px)`;
+    innerMusicList.scrollLeft -= 160
 }, false);
 
 // playing actions
-
-playbtn.addEventListener('click', () => {
+const play = (second) => {
     if (playbtn.firstElementChild.classList.contains('bi-play-fill')) {
         playbtn.firstElementChild.classList.replace('bi-play-fill', 'bi-pause-fill');
         playanimation();
+        playingAudio.currentTime = second;
         playingAudio.play();
         playingAudio.volume = volumeSize.value / 100;
+        console.log(playingAudio.currentTime)
+        console.log(playingAudio.duration)
+        totalTime.textContent = convertSecondsToMinutes(playingAudio.duration)
+        setInterval(() => {
+            const value = getPrecent(playingAudio.currentTime, playingAudio.duration)
+            currentTimeSlider.value = value;
+            currentTime.textContent = convertSecondsToMinutes(playingAudio.currentTime)
+        }, 500)
+
 
     } else {
         playbtn.firstElementChild.classList.replace('bi-pause-fill', 'bi-play-fill');
         stopAnimation();
         playingAudio.pause();
     }
-})
+}
+
+
+playbtn.addEventListener('click', () => play(0))
+
+// play the specific time
+currentTimeSlider.onchange = (e) => {
+    const precent = e.target.value;
+    playingAudio.currentTime = precent;
+    console.log(playingAudio.currentTime)
+}
+
+/********************************* time util functions **************************/
+
+// calculate the time and get the precent
+function getPrecent(currentSecond, seconds) {
+    return (100 * currentSecond) / seconds
+}
+
+// calculate the time and get the precent
+function getSecond(precent, seconds) {
+    return (precent * seconds) / 100
+}
+
+// convert second to minutes
+
+function convertSecondsToMinutes(seconds) {
+    const minutes = Number.parseInt(seconds / 60);
+    const remainedSeconds = Number.parseInt(seconds % 60);
+    return `${minutes}:${remainedSeconds}`
+}
 
 
 // clock on play view
@@ -200,6 +232,7 @@ let selectOp = document.querySelector('select');
 selectOp.addEventListener('change', () => {
     let color = (selectOp[selectOp.selectedIndex].innerHTML);
     document.body.style.color = color;
+
 
     //  document.querySelector('input').background =  `${color}`;
 

@@ -1,7 +1,9 @@
-body{
+body {
     color: #fff;
 }
+
 * {
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,10 +11,22 @@ body{
     text-decoration: none;
     text-align: center;
     color: inherit;
-    font-family:  -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.container{
+
+/* Scrollbar */
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ffffff5c;
+}
+
+.container {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -24,13 +38,16 @@ body{
     background-size: cover;
     transition: background-image 0.1s ease-in-out;
 
-    
+
 }
-.container .title{
+
+.container .title {
     font-size: xx-large;
-    margin-top: 30px;;
+    margin-top: 30px;
+    ;
 }
-.music-player-container{
+
+.music-player-container {
     position: fixed;
     top: 15%;
     width: 80%;
@@ -42,13 +59,15 @@ body{
     grid-template-columns: 10% 90%;
     overflow: hidden;
 }
-.navbar-menu{
+
+.navbar-menu {
     display: grid;
     position: relative;
     width: 100%;
     height: 100%;
 }
-.navbar-menu  button{
+
+.navbar-menu button {
     border: none;
     margin: auto;
     display: flex;
@@ -58,18 +77,21 @@ body{
     width: 50px;
     border-radius: 50%;
     background-color: #ffffff2a;
-    cursor: pointer; 
+    cursor: pointer;
 }
-.navbar-menu  button i{
+
+.navbar-menu button i {
     font-size: 20px;
     font-weight: 900;
 }
-.navbar-menu button:hover{
+
+.navbar-menu button:hover {
     background-color: #0396ff;
     transition: all 0.2s linear;
 }
- /* setting */
-.setting{
+
+/* setting */
+.setting {
     padding: 20px 4px;
     position: absolute;
     height: 100%;
@@ -79,52 +101,59 @@ body{
     transform-origin: left;
     transition: transform 0.2s ease-in-out;
 }
-.setting h4{
+
+.setting h4 {
     font-size: 15px;
     color: inherit;
 }
-.setting .highlight-color{
+
+.setting .highlight-color {
     margin-top: 30px;
     font-size: 8px;
     color: inherit;
     text-align: left;
 }
-.setting i{
+
+.setting i {
     position: absolute;
     cursor: pointer;
     font-size: 30px;
     right: 20px;
     bottom: 20px;
 }
-.setting i:hover{
-    color:#0d0dd1 ;
+
+.setting i:hover {
+    color: #0d0dd1;
 }
 
-select{
+select {
     width: 100%;
     margin: 10px 0;
-    color:#000066 ;
+    color: #000066;
     border-radius: 5px;
 }
-select option{
+
+select option {
     color: var(--c);
 }
 
 
 /* music-player-body */
-.music-player-body{
+.music-player-body {
     display: grid;
     grid-template-rows: 65% 35%;
     transition: transform .2s ease-in;
 }
-.playing-view{
+
+.playing-view {
     position: relative;
     display: grid;
     justify-content: center;
     align-items: center;
     grid-template-columns: 40% 60%;
 }
-.music-logo{
+
+.music-logo {
     overflow: hidden;
     z-index: 2;
     position: relative;
@@ -141,17 +170,19 @@ select option{
     background-size: cover;
     transition: background-image 0.1s linear;
 }
-.music-logo i{
+
+.music-logo i {
     font-size: 150px;
     font-weight: 900;
     transition: all 0.4s linear;
 }
-.volume{
+
+.volume {
     position: fixed;
     padding-left: 10px;
 }
 
-.sounds{
+.sounds {
     padding-top: 10px;
     padding-bottom: 20px;
     padding-right: 20px;
@@ -161,21 +192,36 @@ select option{
     justify-content: center;
     position: absolute;
 }
-.sounds input{
+
+.sounds input {
     opacity: 0;
-    transition:all 0.1s linear;
+    transition: all 0.1s linear;
     cursor: pointer;
 }
-.sounds i:hover + input,
-.sounds i:focus + input,
-.sounds i:active + input{
+
+.sounds i:hover+input,
+.sounds i:focus+input,
+.sounds i:active+input {
     opacity: 1;
 }
-.sounds:hover input{
+
+.sounds:hover input {
     opacity: 1;
 }
+
+#current_time_slider {
+    margin-top: 40px;
+    width: 265px;
+}
+
+.time-boxes {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
 /* playing-detailes */
-.playing-detailes{
+.playing-detailes {
     position: relative;
     width: 100%;
     height: 100%;
@@ -183,7 +229,8 @@ select option{
     align-items: end;
     justify-content: center;
 }
-.playing-detailes .mini-navbar{
+
+.playing-detailes .mini-navbar {
     position: absolute;
     width: 100%;
     top: 5%;
@@ -191,16 +238,20 @@ select option{
     display: flex;
     justify-content: right;
 }
-.playing-detailes .mini-navbar *{
+
+.playing-detailes .mini-navbar * {
     padding: 0 10px;
 }
-.playing-detailes .mini-navbar .hour .clock-info{
+
+.playing-detailes .mini-navbar .hour .clock-info {
     display: inline;
 }
-.playing-detailes .lines{
+
+.playing-detailes .lines {
     justify-self: self-end;
 }
-.playing-detailes .lines li{
+
+.playing-detailes .lines li {
     transform-origin: bottom;
     display: inline-block;
     margin: 0 10px;
@@ -218,7 +269,7 @@ select option{
 
 
 /* play list */
-.play-list{
+.play-list {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -228,7 +279,8 @@ select option{
     bottom: 0px;
     transition: bottom .2s ease-in;
 }
-.play-list button{
+
+.play-list button {
     margin: 0 4px;
     border: none;
     font-size: 40px;
@@ -240,29 +292,34 @@ select option{
     width: 50px;
     flex-shrink: 0;
 }
+
 .play-list button:hover {
     background-color: #0396ff;
 }
-.btn-active{
+
+.btn-active {
     background-color: #0396ff !important;
 }
 
-.play-list .inner-list{
-    overflow: hidden;
+.play-list .inner-list {
+    overflow-x: scroll;
+    padding-bottom: 4px;
 }
-.bottom-130{
+
+.bottom-130 {
     bottom: -130px !important;
 }
-.translateY-70{
+
+.translateY-70 {
     transform: translateY(70px);
 }
 
-.play-list .inner-list .music-list{
-    display: flex; 
-    transition: transform 0.3s linear; 
+.play-list .inner-list .music-list {
+    display: flex;
+    transition: transform 0.3s linear;
 }
 
-.music-list .music{
+.music-list .music {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -281,7 +338,8 @@ select option{
     position: relative;
     overflow: hidden;
 }
-.add-to-fav{
+
+.add-to-fav {
     background-color: rgba(199, 199, 199, 0.699);
     width: 100%;
     height: 50%;
@@ -293,31 +351,56 @@ select option{
     transform: translateY(100px);
     transition: transform .3s ease;
 }
+
 .add-to-fav i {
     padding: 20px;
 }
-.music-list .music:hover .add-to-fav{
+
+.music-list .music:hover .add-to-fav {
     transform: translateY(0px);
 }
 
 
 /* animation */
 @keyframes animate1 {
-   from{
+    from {
         transform: scale(1);
         transition: all 0.5s linear;
     }
-    to{
+
+    to {
         transform: scale(1.2);
         transition: all 1s linear;
     }
 }
+
 @keyframes animate2 {
-   0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+
+    0%,
+    10%,
+    20%,
+    30%,
+    40%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
         transform: scaleY(var(--i));
         transition: all var(--j) linear;
     }
-    5%, 15%, 25%, 35%, 45%,55%,65%,75%,85%, 95%{
+
+    5%,
+    15%,
+    25%,
+    35%,
+    45%,
+    55%,
+    65%,
+    75%,
+    85%,
+    95% {
         transform: scaleY(1.2);
         transition: all var(--j) linear;
     }
