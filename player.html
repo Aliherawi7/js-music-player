@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,28 +7,30 @@
     <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
+
     <div class="container">
         <h4 class="title">Cool Music Player</h4>
         <div class="music-player-container">
             <div class="navbar-menu">
                 <button><i class="bi bi-music-note"></i></button>
-                <button><i class="bi bi-heart"></i></button>
+                <button id="fovrite_button"><i class="bi bi-heart"></i></button>
                 <button><i class="bi bi-search"></i></button>
-                <button id="play-list"><i class="bi bi-music-note-list"></i></button>
+                <button id="play_list"><i class="bi bi-music-note-list"></i></button>
                 <button class="btnsetting"><i class="bi bi-gear"></i></button>
                 <div class="setting">
                     <h4>Setting</h4>
                     <div class="highlight-color">
                         <span>Color</span>
                         <select name="color" id="color">
+                            <option value="" style="--c: #fff;">#fff</option>
                             <option value="" style="--c: #ff0076;">#ff0076</option>
                             <option value="" style="--c: #48e1ec;">#48e1ec</option>
                             <option value="" style="--c: #9055ff;">#9055ff</option>
                             <option value="" style="--c: #dc2537;">#dc2537</option>
                             <option value="" style="--c: #000066;">#000066</option>
-                            <option value="" style="--c: #fad6a6;">#fad6a6</option>
+                            <option value="" style="--c: #d2ec0b;">#fad6a6</option>
                             <option value="" style="--c: #ff6800;">#ff6800</option>
                         </select>
                     </div>
@@ -49,22 +52,23 @@
                     <div class="playing-detailes">
                         <div class="mini-navbar">
                             <div class="hour">
-                                <i class="bi bi-clock-fill"></i><h4 class="clock-info"></h4>
+                                <i class="bi bi-clock-fill"></i>
+                                <h4 class="clock-info"></h4>
                             </div>
                             <i class="bi bi-cloud"></i>
                         </div>
                         <div class="animation">
                             <ul class="lines">
-                                <li style="--i: 0; --j: 15s;"></li>
-                                <li style="--i: 0.3; --j: 9s;"></li>
-                                <li style="--i: 0.6; --j: 8s;"></li>
-                                <li style="--i: 0.1; --j: 13s;"></li>
+                                <li style="--i: 0; --j: 4s;"></li>
+                                <li style="--i: 0.3; --j: 1s;"></li>
+                                <li style="--i: 0.6; --j: 3s;"></li>
+                                <li style="--i: 0.1; --j: 2s;"></li>
                                 <li style="--i: 0.3; --j: 4s;"></li>
                                 <li style="--i: 0.8; --j: 3s;"></li>
-                                <li style="--i: 0.2; --j: 9s;"></li>
-                                <li style="--i: 0.1; --j: 10s;"></li>
-                                <li style="--i: 0.5; --j: 12s;"></li>
-                                <li style="--i: 0; --j: 8s;"></li>
+                                <li style="--i: 0.2; --j: 5s;"></li>
+                                <li style="--i: 0.1; --j: 4s;"></li>
+                                <li style="--i: 0.5; --j: 3s;"></li>
+                                <li style="--i: 0; --j: 2s;"></li>
                             </ul>
                         </div>
                     </div>
@@ -72,56 +76,7 @@
                 <div class="play-list">
                     <button id="prev"><i class="bi bi-caret-left-fill"></i></button>
                     <div class="inner-list">
-                        <div class="music-list">
-                            <div class="music" id="music1">
-                                <h4>Music 1</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music2">
-                                <h4>Music 2</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music3">
-                                <h4>Music 3</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music4">
-                                <h4>Music 4</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music5">
-                                <h4>Music 5</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music6">
-                                <h4>Music 6</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music7">
-                                <h4>Music 7</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                            <div class="music" id="music8">
-                                <h4>Music 8</h4>
-                                <div class="add-to-fav">
-                                    <i class="bi bi-heart"></i>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="music-list" id="music_list"></div>
                     </div>
                     <button id="next"><i class="bi bi-caret-right-fill"></i></button>
                 </div>
@@ -130,4 +85,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

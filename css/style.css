@@ -1,3 +1,6 @@
+body{
+    color: #fff;
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +8,8 @@
     list-style: none;
     text-decoration: none;
     text-align: center;
-    color: #fff;
-    font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    color: inherit;
+    font-family:  -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 .container{
@@ -15,7 +18,7 @@
     text-align: center;
     width: 100%;
     height: 100%;
-    color: rgb(163, 31, 31);
+    color: inherit;
     background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
     background-repeat: no-repeat;
     background-size: cover;
@@ -77,15 +80,13 @@
     transition: transform 0.2s ease-in-out;
 }
 .setting h4{
-    font-family: 'skyfont';
     font-size: 15px;
-    color: #fff;
+    color: inherit;
 }
 .setting .highlight-color{
     margin-top: 30px;
     font-size: 8px;
-    color: #fff;
-    font-family: 'skyfont';
+    color: inherit;
     text-align: left;
 }
 .setting i{
